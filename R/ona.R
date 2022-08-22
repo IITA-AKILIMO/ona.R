@@ -181,7 +181,7 @@ onaDownload = function(formName, account, uname, pass=NA, ...) {
   # get the data, depending on public or not
   dataCSVstr <- ifelse(is.na(pass),
                  getURI(dataUrl),
-                 getURI(dataUrl, userpwd=str_c(uname,pass,sep=":"), httpauth = 1L, ssl.verifypeer = FALSE))
+                 getURI(dataUrl, userpwd=str_c(uname,pass,sep=":"), httpauth = 1L,verbose = TRUE, ssl.verifypeer = FALSE))
   
   # get the form, depending on public or not
   # TODO: situations where data is public, form is not
@@ -189,7 +189,7 @@ onaDownload = function(formName, account, uname, pass=NA, ...) {
 
   formJSON <- ifelse(is.na(pass),
                  (formUrl),
-                 getURI(formUrl, userpwd=str_c(uname,pass,sep=":"), httpauth = 1L, ssl.verifypeer = FALSE))
+                 getURI(formUrl, userpwd=str_c(uname,pass,sep=":"), httpauth = 1L,verbose = TRUE, ssl.verifypeer = FALSE))
   onaRead(textConnection(dataCSVstr), formJSON, ...)
 }
 
