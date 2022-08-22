@@ -183,8 +183,10 @@ onaDownload = function(formName, account, uname, pass=NA, ...) {
   
   # get the form, depending on public or not
   # TODO: situations where data is public, form is not
+  
+  print(formUrl)
   formJSON <- ifelse(is.na(pass),
-                 getURI(formUrl),
+                 (formUrl),
                  getURI(formUrl, userpwd=str_c(uname,pass,sep=":"), httpauth = 1L))
   onaRead(textConnection(dataCSVstr), formJSON, ...)
 }
