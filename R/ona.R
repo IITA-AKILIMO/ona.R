@@ -172,6 +172,8 @@ onaDownload = function(formName, account, uname, pass=NA, ...) {
   dataUrl = fUrl(formName, account)
   formUrl = fUrl(formName, account, form=T)
   
+  print(formUrl)
+  
   #TODO -- pre-flight check? below doesn't work; expects 200+ status
   #if(!url.exists(datUrl)) { stop("could not find ", dataUrl)}
   #if(!url.exists(formUrl)) { stop("could not find ", formUrl)}
@@ -184,7 +186,7 @@ onaDownload = function(formName, account, uname, pass=NA, ...) {
   # get the form, depending on public or not
   # TODO: situations where data is public, form is not
   
-  print(formUrl)
+
   formJSON <- ifelse(is.na(pass),
                  (formUrl),
                  getURI(formUrl, userpwd=str_c(uname,pass,sep=":"), httpauth = 1L))
